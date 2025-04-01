@@ -14,5 +14,5 @@ urlpatterns = [
     path('blog/', include('blog.urls', namespace='blog')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, 
          name='django.contrib.sitemaps.views.sitemaps'),
-    path('', views.blog_home, name='home'),  # Set blog homepage as root
+    path('', TemplateView.as_view(template_name='blog/base.html'), name='home'),  # Set blog homepage as root
 ]
