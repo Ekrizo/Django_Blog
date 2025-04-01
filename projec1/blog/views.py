@@ -104,3 +104,12 @@ class PostListView(ListView):
      context_object_name = 'posts'
      paginate_by = 100
      template_name = 'blog/post/list.html'
+
+     from django.shortcuts import render
+from .models import Post
+
+def homepage_view(request):
+    # Retrieve recent posts or other content to display on the homepage
+    recent_posts = Post.published.all()[:5]  # Fetch the latest 5 published posts
+    
+    return render(request, 'blog/base.html', {'recent_posts': recent_posts})
